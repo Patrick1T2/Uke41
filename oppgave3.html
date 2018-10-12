@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Oppgave 3</title>
+	<style type="text/css">
+		body {
+			margin: 0;
+			padding: 0;
+			overflow-y: hidden;
+		}
+		#canvas {
+			margin: 0;
+			padding: 0;
+			border: 1px solid #000;
+		}
+
+	</style>
+</head>
+<body>
+	<canvas id="canvas"></canvas>
+
+	<script type="text/javascript">
+		var c = document.getElementById("canvas");
+		var ctx = c.getContext("2d");
+
+		c.onclick = function(event) {
+			console.log("click");
+			var x = event.clientX;
+			var y = event.clientY;
+
+			console.log(x + ", " + y);
+			ctx.beginPath();
+			ctx.arc(x, y, 100, 0, 2 * Math.PI);
+			ctx.stroke();
+		}
+
+		updateCanvasSize(window.innerWidth-2, window.innerHeight);
+		window.onresize = function() {
+			updateCanvasSize(window.innerWidth-2, window.innerHeight);
+		}
+
+		function updateCanvasSize(w, h) {
+			c.width = w;
+			c.height = h;
+		}
+	</script>
+</body>
+</html>
